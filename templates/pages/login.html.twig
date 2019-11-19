@@ -1,0 +1,52 @@
+{% extends 'index.html.twig' %}
+
+{% block body %}
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <header class="card-header">
+                    <h4 class="card-title mt-2">Login</h4>
+                </header>
+                <article class="card-body">
+                    <form action="{{ path('login') }}" method="post">
+
+
+                        <div class="form-group">
+
+                            <label for="inputEmail" class="sr-only">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                        </div> <!-- form-group end.// -->
+
+                        <div class="form-group">
+
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        </div> <!-- form-group end.// -->
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-success">Connection </button>
+                        </div> <!-- form-group// -->
+
+                    </form>
+                </article> <!-- card-body end .// -->
+                <div class="border-top card-body text-center">Vous n'avez pas encore de compte ? <a href="">Register</a></div>
+            </div> <!-- card.// -->
+        </div> <!-- col.//-->
+
+    </div> <!-- row.//-->
+
+
+
+{% endblock %}

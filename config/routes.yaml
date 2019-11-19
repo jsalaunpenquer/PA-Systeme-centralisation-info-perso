@@ -1,0 +1,34 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+register:
+  path: /register
+  controller: App\Controller\RegisterController::index
+
+home:
+  path: /
+  controller: App\Controller\HomeController::index
+
+login:
+  path: /login
+  controller: App\Controller\LoginController::login
+
+logout:
+  path: /logout
+  controller: App\Controller\DisconnectController::logout
+
+folder_add:
+  path:     /folder/{type}/add
+  controller: App\Controller\FolderController:addAction
+
+folder_edit:
+  path:     /folder/{id}/edit
+  controller: App\Controller\FolderController:editAction
+  requirements:
+      id: \d+
+
+folder_view:
+  path:     /folder/view
+  controller: App\Controller\FolderController:viewAction
+  requirements:
+      id: \d+
